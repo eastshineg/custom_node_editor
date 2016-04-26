@@ -74,7 +74,7 @@ namespace BTNode
 
     public class NodeEditorWindow : EditorWindow
     {
-        MouseEvent _mouse_event;
+        MouseEvent _mouse_event = new MouseEvent();
 
         List<Node> _node_list = new List<Node>();
 
@@ -92,9 +92,15 @@ namespace BTNode
             {
                 var context_menu = new GenericMenu();
                 context_menu.AddItem(new GUIContent("new node"), false, ContextMenuSelectCallback, ContextMenuType.ADD_NODE);
+                context_menu.ShowAsContext();
             }
 
             BeginWindows();
+            
+            for(int i = 0; i < this._node_list.Count; ++i)
+            {
+                this._node_list[i].Draw();
+            }
 
             EndWindows();
         }
@@ -107,7 +113,7 @@ namespace BTNode
             {
                 case ContextMenuType.ADD_NODE:
                     {
-                        var node = new Node();
+					var node = new Node(this._node_list.Count);
                         node.Data.WindowRect = new Rect(this._mouse_event.CurPos.x, this._mouse_event.CurPos.y, node.Data.WindowRect.width, node.Data.WindowRect.height);
                         this._node_list.Add(node);
                     }

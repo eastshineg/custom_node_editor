@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
 namespace BTNode
 {
-    public class NodeData : ScriptableObject
+    public class NodeData
     {
-        public bool New;
         public Rect WindowRect;
         public string WindowTitle;
     }
