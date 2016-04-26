@@ -13,7 +13,14 @@ namespace BTNode
 
         public Node(int id)
         {
+            this._node_data = new NodeData();
             this._node_data.WindowRect = new Rect(0, 0, 100, 40);
+            this._id = id;
+        }
+        
+        public Node(NodeData node_data, int id)
+        {
+            this._node_data = node_data;
             this._id = id;
         }
 
